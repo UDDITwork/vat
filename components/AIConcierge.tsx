@@ -7,7 +7,7 @@ import { ChatMessage } from '../types';
 const AIConcierge: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'assistant', content: "Hey — I’m the Vatalique AI Concierge. Want to explore how custom AI agents could automate your business?" }
+    { role: 'assistant', content: "Hello. I’m a senior consultant at Vatalique. How can we help you automate your business operations today?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -77,8 +77,8 @@ const AIConcierge: React.FC = () => {
                   className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${msg.role === 'user'
-                      ? 'bg-white text-black font-medium'
-                      : 'bg-white/5 text-gray-300 border border-white/5'
+                    ? 'bg-white text-black font-medium'
+                    : 'bg-white/5 text-gray-300 border border-white/5'
                     }`}>
                     {msg.content}
                   </div>

@@ -82,40 +82,31 @@ const App: React.FC = () => {
 
         {/* Footer */}
         <footer className="relative py-20 px-6 border-t border-white/5 bg-black">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="space-y-6">
               <div className="font-syncopate font-bold text-2xl tracking-tighter">
                 VATA<span className="text-cyan-400">LIQUE</span>
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Elite AI agency constructing sovereign intelligence layers for global enterprises.
+              <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
+                AI systems that automate work, replace manual effort, and scale businesses.
               </p>
             </div>
             <div>
-              <h5 className="text-[10px] uppercase tracking-widest text-white font-bold mb-6">Directory</h5>
-              <ul className="space-y-4 text-gray-500 text-sm">
-                <li><a href="#" className="hover:text-cyan-400 transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-cyan-400 transition-colors">Ethics Protocol</a></li>
-                <li><a href="#" className="hover:text-cyan-400 transition-colors">Compute Credits</a></li>
-              </ul>
+              <h5 className="text-[10px] uppercase tracking-widest text-white font-bold mb-6">Contact</h5>
+              <div className="space-y-4 text-gray-500 text-sm font-medium">
+                <p>35N, HR ESTATE, Bodla, Bichpuri, road, agra, 282010</p>
+                <p>+91 7906147228</p>
+                <p>support@vatalique.com</p>
+                <p className="text-xs text-gray-600">GSTIN: 09EYNPR9219B1ZX</p>
+              </div>
             </div>
             <div>
               <h5 className="text-[10px] uppercase tracking-widest text-white font-bold mb-6">Connect</h5>
               <ul className="space-y-4 text-gray-500 text-sm">
                 <li><a href="#" className="hover:text-cyan-400 transition-colors">X / Twitter</a></li>
                 <li><a href="#" className="hover:text-cyan-400 transition-colors">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-cyan-400 transition-colors">Neuralink (BETA)</a></li>
+                <li><a href="#" className="hover:text-cyan-400 transition-colors">Instagram</a></li>
               </ul>
-            </div>
-            <div>
-              <h5 className="text-[10px] uppercase tracking-widest text-white font-bold mb-6">Status</h5>
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                <span className="text-xs text-gray-400">All Nodes Operational</span>
-              </div>
-              <div className="mt-8">
-                <p className="text-[10px] text-gray-600 uppercase tracking-widest">EST. 2025</p>
-              </div>
             </div>
           </div>
         </footer>
