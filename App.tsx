@@ -10,6 +10,8 @@ import WhyUsPage from './components/WhyUsPage';
 import { Footer } from './components/Footer';
 import PastWorkPage from './components/PastWorkPage';
 import ServicesPage from './components/ServicesPage';
+import TeamPage from './components/TeamPage';
+import InsightsPage from './components/InsightsPage';
 
 const App: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -132,16 +134,14 @@ const App: React.FC = () => {
           )}
 
           {activeView === 'team' && (
-            <motion.div key="team" className="pt-40 pb-20 px-6 text-center h-screen" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <h1 className="text-4xl text-black dark:text-white font-syncopate mb-4">Our Team</h1>
-              <p className="text-gray-500">Building Intelligence.</p>
+            <motion.div key="team" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <TeamPage />
             </motion.div>
           )}
 
           {activeView === 'insights' && (
-            <motion.div key="insights" className="pt-40 pb-20 px-6 text-center h-screen" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <h1 className="text-4xl text-black dark:text-white font-syncopate mb-4">Insights</h1>
-              <p className="text-gray-500">Engineering thoughts on AI.</p>
+            <motion.div key="insights" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <InsightsPage />
             </motion.div>
           )}
         </AnimatePresence>
