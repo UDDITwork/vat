@@ -79,6 +79,7 @@ const App: React.FC = () => {
         </div>
         <div className="hidden md:flex items-center gap-10">
           {[
+            { label: 'Home', view: 'home' },
             { label: 'Services', view: 'services' },
             { label: 'Past Work', view: 'past-work' },
             { label: 'Our Team', view: 'team' },
@@ -95,7 +96,7 @@ const App: React.FC = () => {
           <ThemeToggle />
           <button
             onClick={() => setShowWhyUs(true)}
-            className="px-6 py-2 border border-black/20 dark:border-white/20 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+            className="px-6 py-2 bg-slate-900 text-white dark:bg-white dark:text-black rounded-full text-[10px] font-bold uppercase tracking-widest hover:scale-105 hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all"
           >
             WHY US?
           </button>
