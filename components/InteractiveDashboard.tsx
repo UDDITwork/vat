@@ -24,24 +24,43 @@ const InteractiveDashboard: React.FC = () => {
         <KPI label="Execution Speed" value="Instant" sub="Near-instant response & execution" />
       </div>
 
-      <div className="relative group overflow-hidden rounded-[2rem] border border-white/5">
+      <div className="relative group overflow-hidden rounded-[2rem] border border-white/5 h-[500px]">
         <img
           src="https://picsum.photos/1200/600?random=dashboard"
-          className="w-full h-[500px] object-cover opacity-20 grayscale group-hover:scale-105 transition-transform duration-1000"
-          alt="Dashboard"
+          className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:scale-105 transition-transform duration-1000"
+          alt="The Vatalique Way"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent p-12 flex flex-col justify-end">
-          <h4 className="text-2xl font-syncopate font-bold mb-4">The VATALIQUE Pulse</h4>
-          <p className="text-gray-400 max-w-lg mb-8">Our proprietary monitoring layer allows clients to see every agentic decision in real-time. Complete transparency, complete control.</p>
-          <div className="flex gap-4">
-            {[1, 2, 3, 4, 5].map(i => (
-              <motion.div
-                key={i}
-                animate={{ height: [20, 60, 40, 80, 30] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
-                className="w-2 bg-cyan-400/50 rounded-full"
-              />
-            ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent p-8 md:p-12 flex flex-col justify-end">
+          <div className="mb-8">
+            <h4 className="text-3xl font-syncopate font-bold mb-2 text-white">THE VATALIQUE WAY</h4>
+            <p className="text-gray-400 max-w-lg text-sm">A clear execution philosophy behind every system we deploy.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 border-t border-white/10 pt-8">
+            {/* Step 1 */}
+            <div className="space-y-2">
+              <span className="text-cyan-500 font-mono text-xs font-bold block">01</span>
+              <h5 className="text-white font-syncopate font-bold text-lg">Observe</h5>
+              <p className="text-gray-500 text-xs leading-relaxed">We study your workflows, data flows, and operational bottlenecks.</p>
+            </div>
+            {/* Step 2 */}
+            <div className="space-y-2">
+              <span className="text-cyan-500 font-mono text-xs font-bold block">02</span>
+              <h5 className="text-white font-syncopate font-bold text-lg">Architect</h5>
+              <p className="text-gray-500 text-xs leading-relaxed">We design custom agentic systems aligned to your business logic.</p>
+            </div>
+            {/* Step 3 */}
+            <div className="space-y-2">
+              <span className="text-cyan-500 font-mono text-xs font-bold block">03</span>
+              <h5 className="text-white font-syncopate font-bold text-lg">Deploy</h5>
+              <p className="text-gray-500 text-xs leading-relaxed">AI agents go live across chat, voice, CRM, and internal operations.</p>
+            </div>
+            {/* Step 4 */}
+            <div className="space-y-2">
+              <span className="text-cyan-500 font-mono text-xs font-bold block">04</span>
+              <h5 className="text-white font-syncopate font-bold text-lg">Evolve</h5>
+              <p className="text-gray-500 text-xs leading-relaxed">Systems continuously learn, optimize, and scale autonomously.</p>
+            </div>
           </div>
         </div>
       </div>
