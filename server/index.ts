@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { createClient } from '@libsql/client';
 import jobsRouter from './routes/jobs';
@@ -7,15 +9,25 @@ import applicationsRouter from './routes/applications';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://localhost:5173'],
+    origin: process.env.NODE_ENV === 'production'
+        ? true
+        : ['http://localhost:3000', 'http://localhost:5173'],
     credentials: true
 }));
 app.use(express.json());
+
+// Serve static files in production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../dist')));
+}
 
 // Initialize Turso client
 export const tursoClient = createClient({
@@ -83,9 +95,16 @@ app.post('/api/admin/login', (req, res) => {
 });
 
 // Health check
-app.get('/api/health', (req, res) => {
+app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+// Serve React app for all other routes in production (SPA catch-all)
+if (process.env.NODE_ENV === 'production') {
+    app.get('*', (_req, res) => {
+        res.sendFile(path.join(__dirname, '../dist/index.html'));
+    });
+}
 
 // Start server
 app.listen(PORT, async () => {

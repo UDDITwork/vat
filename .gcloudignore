@@ -1,0 +1,36 @@
+# Git
+.git
+.gitignore
+
+# Node
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment files (secrets should be in Cloud Run env vars)
+.env
+.env.local
+.env.*.local
+
+# Build outputs (will be rebuilt)
+dist/
+dist-server/
+
+# Temp files
+*.log
+*.tmp
+tmpclaude-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+*.test.ts
+*.spec.ts
+__tests__/
+coverage/
