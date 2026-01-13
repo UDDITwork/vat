@@ -13,11 +13,16 @@ import PastWorkPage from './components/PastWorkPage';
 import ServicesPage from './components/ServicesPage';
 import TeamPage from './components/TeamPage';
 import InsightsPage from './components/InsightsPage';
+import CarriersPage from './components/CarriersPage';
+import AdminLogin from './components/admin/AdminLogin';
+import AdminPanel from './components/admin/AdminPanel';
 
 const App: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showWhyUs, setShowWhyUs] = useState(false);
-  const [activeView, setActiveView] = useState('home'); // 'home' | 'past-work' | 'team' | 'insights' | 'services'
+  const [activeView, setActiveView] = useState('home'); // 'home' | 'past-work' | 'team' | 'insights' | 'services' | 'carriers'
+  const [isAdminMode, setIsAdminMode] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -28,6 +33,21 @@ const App: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 1500);
     return () => clearTimeout(timer);
+  }, []);
+
+  // Check for admin mode via URL hash
+  useEffect(() => {
+    const checkAdminRoute = () => {
+      const isAdmin = window.location.hash === '#admin';
+      setIsAdminMode(isAdmin);
+      // Check if already authenticated
+      if (isAdmin && sessionStorage.getItem('admin_auth') === 'true') {
+        setIsAdminAuthenticated(true);
+      }
+    };
+    checkAdminRoute();
+    window.addEventListener('hashchange', checkAdminRoute);
+    return () => window.removeEventListener('hashchange', checkAdminRoute);
   }, []);
 
   const handleNavClick = (view: string, id?: string) => {
@@ -84,7 +104,8 @@ const App: React.FC = () => {
             { label: 'Services', view: 'services' },
             { label: 'Past Work', view: 'past-work' },
             { label: 'Our Team', view: 'team' },
-            { label: 'Insights', view: 'insights' }
+            { label: 'Insights', view: 'insights' },
+            { label: 'Carriers', view: 'carriers' }
           ].map((item) => (
             <button
               key={item.label}
@@ -147,6 +168,12 @@ const App: React.FC = () => {
               <InsightsPage />
             </motion.div>
           )}
+
+          {activeView === 'carriers' && (
+            <motion.div key="carriers" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <CarriersPage />
+            </motion.div>
+          )}
         </AnimatePresence>
 
         {/* Footer */}
@@ -160,6 +187,20 @@ const App: React.FC = () => {
 
       {/* AI Concierge Overlay */}
       <AIConcierge />
+
+      {/* Admin Panel */}
+      {isAdminMode && (
+        isAdminAuthenticated ? (
+          <AdminPanel
+            onLogout={() => {
+              setIsAdminAuthenticated(false);
+              window.location.hash = '';
+            }}
+          />
+        ) : (
+          <AdminLogin onLogin={() => setIsAdminAuthenticated(true)} />
+        )
+      )}
     </div >
   );
 };
